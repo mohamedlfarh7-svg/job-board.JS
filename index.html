@@ -25,27 +25,42 @@
     <section class="hero">
         <div class="hero-eyebrow">PROMOTION MERN 2026/2027</div>
         <h1>Trouvez votre stage ou alternance</h1>
-        <p>10 offres de développement web disponibles</p>
+        <p id="total-count-text">Chargement des offres...</p>
     </section>
 
     <div class="search-bar">
-        <input type="text" class="search-input" placeholder="Titre, entreprise, description...">
-        <button class="filter-btn">Tout type ▾</button>
-        <button class="filter-btn">Toutes villes ▾</button>
-        <button class="filter-btn">Toutes techs ▾</button>
-        <span class="filter-btn count">10 offres</span>
-        <button class="filter-btn">Date ▾</button>
+        <input type="text" id="search-input" class="search-input" placeholder="Titre, entreprise, description...">
+   
+        <select id="type-select" class="filter-btn">
+            <option value="">Tout type</option>
+            <option value="Stage">Stage</option>
+            <option value="Alternance">Alternance</option>
+        </select>
+
+        <select id="ville-select" class="filter-btn">
+            <option value="">Toutes villes</option>
+            <option value="Casablanca">Casablanca</option>
+            <option value="Rabat">Rabat</option>
+            <option value="Tangier">Tangier</option>
+            <option value="Remote">Remote</option>
+        </select>
+
+        <select id="tech-select" class="filter-btn">
+            <option value="">Toutes techs</option>
+            <option value="React">React</option>
+            <option value="PHP">PHP</option>
+            <option value="Laravel">Laravel</option>
+            <option value="Node.js">Node.js</option>
+            <option value="JavaScript">JavaScript</option>
+        </select>
+
+        <span class="filter-btn count" id="count-badge">0 offres</span>
     </div>
 
     <main class="listings" id="listings">
-
-
     </main>
-    <script src="./js/data.js"></script>
-    <script src="./js/render.js"></script>
-    <script src="./js/app.js"></script>
 
-
+    <script type="module" src="./js/app.js"></script>
 </body>
 
 </html>
