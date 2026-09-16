@@ -1,5 +1,5 @@
 import { fetchOffres } from './data.js';
-import { renderOffres } from './render.js';
+import { renderOffers } from './render.js';
 import { filterAndSortOffres } from './filters.js';
 
 let allOffres = [];
@@ -9,32 +9,45 @@ const typeSelect = document.getElementById('type-select');
 const villeSelect = document.getElementById('ville-select');
 const techSelect = document.getElementById('tech-select');
 const countBadge = document.getElementById('count-badge');
+const totalCountText = document.getElementById('total-count-text');
 const container = document.getElementById('listings');
 
 function updateUI() {
   const criteria = {
-    search: searchInput.value,
-    typeContrat: typeSelect.value,
-    ville: villeSelect.value,
-    tech: techSelect.value
+    search: searchInput ? searchInput.value : '',
+    typeContrat: typeSelect ? typeSelect.value : '',
+    ville: villeSelect ? villeSelect.value : '',
+    tech: techSelect ? techSelect.value : ''
   };
 
   const filtered = filterAndSortOffres(allOffres, criteria);
 
-  countBadge.textContent = `${filtered.length} offres`;
+  // تحديث الأعداد
+  if (countBadge) {
+    countBadge.textContent = `${filtered.length} offres`;
+  }
+  if (totalCountText) {
+    totalCountText.textContent = `${filtered.length} offre(s) disponible(s)`;
+  }
 
-  renderOffres(filtered, container);
+  renderOffers(filtered); 
 }
 
 async function initApp() {
+  if (container) {
+    container.innerHTML = '<p>Chargement des offres...</p>';
+  }
+
   allOffres = await fetchOffres();
+  
+  console.log("Données chargées:", allOffres);
+
   updateUI();
 
-  searchInput.addEventListener('input', updateUI);
-  typeSelect.addEventListener('change', updateUI);
-  villeSelect.addEventListener('change', updateUI);
-  techSelect.addEventListener('change', updateUI);
+  if (searchInput) searchInput.addEventListener('input', updateUI);
+  if (typeSelect) typeSelect.addEventListener('change', updateUI);
+  if (villeSelect) villeSelect.addEventListener('change', updateUI);
+  if (techSelect) techSelect.addEventListener('change', updateUI);
 }
 
 initApp();
-

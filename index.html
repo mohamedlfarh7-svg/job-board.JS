@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portail Stages &amp; Alternances</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
 
     <header class="topbar">
@@ -39,10 +37,13 @@
 
         <select id="ville-select" class="filter-btn">
             <option value="">Toutes villes</option>
-            <option value="Casablanca">Casablanca</option>
-            <option value="Rabat">Rabat</option>
-            <option value="Tangier">Tangier</option>
-            <option value="Remote">Remote</option>
+            <option value="Paris">Paris</option>
+            <option value="Lyon">Lyon</option>
+            <option value="Toulouse">Toulouse</option>
+            <option value="Nantes">Nantes</option>
+            <option value="Bordeaux">Bordeaux</option>
+            <option value="Lille">Lille</option>
+            <option value="Marseille">Marseille</option>
         </select>
 
         <select id="tech-select" class="filter-btn">
@@ -57,10 +58,9 @@
         <span class="filter-btn count" id="count-badge">0 offres</span>
     </div>
 
-    <main class="listings" id="listings">
-    </main>
+    <main class="listings" id="listings"></main>
 
+    <!-- التأكد من المسار والنوع module -->
     <script type="module" src="./js/app.js"></script>
 </body>
-
 </html>
